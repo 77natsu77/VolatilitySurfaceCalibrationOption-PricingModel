@@ -5,9 +5,10 @@ A quantitative finance project implementing a full pipeline from live
 market data to implied volatility extraction and volatility surface 
 calibration, written in Python.
 
-Built as an independent project to develop practical skills in 
-quantitative finance, numerical methods, and financial modelling — 
-combining real options data with mathematical pricing theory.
+Built independently as a self-directed learning project, using an AI 
+mentor (Claude) for guided instruction on quantitative finance concepts 
+and Python implementation. All code written and understood by the author; 
+AI used in a teaching capacity rather than for code generation.
 
 ## Motivation
 Options markets imply a different volatility for every strike and 
@@ -33,13 +34,15 @@ pytest tests/
 - [x] Phase 1: Data pipeline (fetch, clean, filter options data)
 - [x] Phase 2: Black-Scholes implementation and implied volatility extraction
 - [x] Phase 3: Volatility surface fitting
-- [ ] Phase 4: Monte Carlo simulation and exotic pricing
+- [x] Phase 4: Monte Carlo simulation and exotic pricing
 - [ ] Phase 5: Analysis and documentation
 
 ## Concepts Covered
 - Call/put options, strike, expiry, moneyness, bid-ask spread
 - Black-Scholes formula and its inputs
 - Implied volatility via Newton-Raphson root-finding
+- Volatility smile and SVI fitting
+- Monte-Carlos simulation, GBM and price calls
 
 ## Dependencies
 pip install yfinance pandas numpy scipy
