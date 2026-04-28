@@ -5,12 +5,6 @@ from .monte_carlo import simulate_gbm, price_european_call, price_asian_call
 from .plots import volatility_smile_plot, plot_paths, plot_convergence, volatility_sensitivity_plot
 import matplotlib.pyplot as plt
 import numpy as np
-#print(f"main.py: calls_clean has {len(calls_clean)} rows")
-#r = 0.05  # risk-free rate proxy, hardcoded for simplicity; in practice, use a more accurate rate
-# Test IV on one row manually
-#row = calls_clean.iloc[0]
-#print(f"Testing: S={spot}, K={row['strike']}, T={T}, mid={row['mid']}")
-#print(f"IV result: {implied_volatility(row['mid'], spot, row['strike'], T, r)}")
 
 # USING SYNTHETIC DATA FOR TESTING AS REAL DATA MAY HAVE ISSUES
 
@@ -29,8 +23,8 @@ print(f"IV range: {iv.min():.4f} to {iv.max():.4f}")
 print(f"True params: a={true_params[0]}, b={true_params[1]}, rho={true_params[2]}, m={true_params[3]}, nu={true_params[4]}")
 
 # Fit SVI to synthetic data
-params = fit_svi(k, iv_squared)
-a, b, rho, m, nu = params
+fitted_params = fit_svi(k, iv_squared)
+a, b, rho, m, nu = fitted_params
 # Print fitted parameters and compare to true parameters
 print(f"\nFitted params:  a={a:.4f}, b={b:.4f}, rho={rho:.4f}, m={m:.4f}, nu={nu:.4f}")
 print(f"True params:    a=0.0400, b=0.1500, rho=-0.3000, m=0.0500, nu=0.2000")
@@ -38,9 +32,6 @@ print(f"True params:    a=0.0400, b=0.1500, rho=-0.3000, m=0.0500, nu=0.2000")
 iv_squared_fit = svi(k, a, b, rho, m, nu)
 rmse = np.sqrt(np.mean((iv_squared_fit - iv_squared)**2))
 print(f"RMSE: {rmse:.6f}")
-
-volatility_smile_plot(strikes, iv)
-
 
 # Simulate paths of stock price using GBM and price a European call option
 S = simulate_gbm(S0=spot, r=r, sigma=0.2, T=T, n_steps=252, n_paths=1000)
@@ -64,7 +55,10 @@ print(f"Asian option price: {asian_price:.4f}")
 print(f"Difference between Black-Scholes and European call: {abs(mc_price - bs_price):.4f}")
 print(f"Difference between Asian and European call: {abs(asian_price - bs_price):.4f}")
 
+# Plotting
 S = simulate_gbm(S0=spot, r=r, sigma=0.2, T=T, n_steps=252, n_paths=1000)
+
+volatility_smile_plot(k, iv, true_params, fitted_params)
 plot_paths(S)
 plot_convergence(S0=spot, K=spot, r=r, sigma=0.2, T=T, bs_price=bs_price)
 volatility_sensitivity_plot(spot, T, r)

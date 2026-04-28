@@ -5,8 +5,8 @@ from src.main.surface import fit_svi, svi, svi_loss
 
 #check for recovery of known SVI parameters using synthetic data
 def test_svi_fit():
-    """Test that SVI fitting can recover known parameters from synthetic data.
-    """
+    """Test that SVI fitting can recover known parameters from synthetic data."""
+    np.random.seed(42) # for reproducibility
     # True parameters for synthetic data
     true_params = (0.04, 0.15, -0.3, 0.05, 0.2)
     a_true, b_true, rho_true, m_true, nu_true = true_params

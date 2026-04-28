@@ -1,19 +1,17 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import os
-import matplotlib.pyplot as plt
 
 from .monte_carlo import price_european_call
 from .models import black_scholes_call
+from .surface import svi
 
 # Ensure plots directory exists
 os.makedirs('plots', exist_ok=True)
 
-
-def volatility_smile_plot(strikes, ivs):
-    import matplotlib.pyplot as plt
-    from .main import k, iv, true_params, a, b, rho, m, nu
-    from .surface import svi
+def volatility_smile_plot(k, iv, true_params, fitted_params):
+    a, b, rho, m, nu = fitted_params
+    
     k_plot = np.linspace(k.min(), k.max(), 200)
     iv_fit_plot = np.sqrt(svi(k_plot, a, b, rho, m, nu))
     iv_true_plot = np.sqrt(svi(k_plot, *true_params))
@@ -29,6 +27,8 @@ def volatility_smile_plot(strikes, ivs):
     plt.grid(True)
     plt.savefig('plots/vol_smile.png')
     print("Plot saved to plots/vol_smile.png")
+
+    
 def plot_paths(S, n_display=50): # number of paths to display in the plot, we use 50 to avoid cluttering the plot
     """Plot a subset of simulated GBM paths."""
     import matplotlib.pyplot as plt
