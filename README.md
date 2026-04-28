@@ -1,3 +1,4 @@
+![CI](https://github.com/77natsu77/VolatilitySurfaceCalibrationOption-PricingModel/actions/workflows/ci.yml/badge.svg)
 # Volatility Surface Calibration & Option Pricing Model
 
 A quantitative finance project implementing a full pipeline from live 
