@@ -1,5 +1,5 @@
 import numpy as np
-
+# Monte Carlo simulation for option pricing
 def simulate_gbm(S0, r, sigma, T, n_steps, n_paths):
     """
     Simulate stock price paths using Geometric Brownian Motion.

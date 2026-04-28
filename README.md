@@ -35,14 +35,43 @@ pytest tests/
 - [x] Phase 2: Black-Scholes implementation and implied volatility extraction
 - [x] Phase 3: Volatility surface fitting
 - [x] Phase 4: Monte Carlo simulation and exotic pricing
-- [ ] Phase 5: Analysis and documentation
+- [x] Phase 5: Analysis and documentation
+
+## Results
+
+### Volatility Smile
+SVI parameterisation fitted to synthetic SPY options data, capturing 
+the characteristic left skew observed in equity markets — higher implied 
+volatility at lower strikes reflecting demand for downside protection.
+
+### Monte Carlo Validation
+European call prices produced by Monte Carlo simulation converge to 
+Black-Scholes analytical prices as path count increases, consistent 
+with the theoretical 1/√n convergence rate.
+
+### Exotic Pricing
+Asian call option priced at approximately 45% below the equivalent 
+European call, reflecting the variance-reducing effect of price averaging 
+over the path.
+
+### Known Limitations
+- Real market data pipeline limited by yfinance data quality; 
+  synthetic data used for surface fitting
+- Single expiry fitted; full surface requires multiple maturities
+- No variance reduction techniques implemented (antithetic variates etc.)
 
 ## Concepts Covered
-- Call/put options, strike, expiry, moneyness, bid-ask spread
-- Black-Scholes formula and its inputs
-- Implied volatility via Newton-Raphson root-finding
-- Volatility smile and SVI fitting
-- Monte-Carlos simulation, GBM and price calls
+- Call/put options, strike price, expiry, moneyness, bid-ask spread
+- Black-Scholes formula: derivation intuition, inputs, and limitations
+- Implied volatility extraction via Newton-Raphson root-finding
+- Volatility smile and skew; SVI (Stochastic Volatility Inspired) parameterisation
+- Geometric Brownian Motion (GBM) and risk-neutral pricing
+- Monte Carlo simulation: path generation, convergence, and variance
+- Exotic option pricing: Asian options (no closed-form solution)
+- Sensitivity analysis and model validation
 
 ## Dependencies
-pip install yfinance pandas numpy scipy
+Install all dependencies with:
+```bash
+pip install yfinance pandas numpy scipy matplotlib pytest
+```

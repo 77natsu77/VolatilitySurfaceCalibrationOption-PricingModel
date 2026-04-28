@@ -1,6 +1,6 @@
 from scipy.stats import norm
 import numpy as np
-
+# Black-Scholes formula and implied volatility calculation
 def black_scholes_call(S, K, T, r, sigma):
     """
     Returns theoretical price of a European call option.

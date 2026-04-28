@@ -1,6 +1,6 @@
 import numpy as np
 from scipy.optimize import minimize
-
+# SVI surface fitting functions
 def prepare_svi_data(calls_clean, spot, r, T):
     clean = calls_clean.dropna(subset=['IV'])
     F = spot * np.exp(r * T)
