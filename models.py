@@ -10,6 +10,9 @@ def black_scholes_call(S, K, T, r, sigma):
     r: risk-free rate (annualised)
     sigma: volatility (annualised)
     """
+    if T <= 0:
+        return max(S - K, 0)  # intrinsic value only
+    
     d1 = (np.log(S / K) + (r + 0.5 * sigma**2) * T) / (sigma * np.sqrt(T))
     d2 = d1 - sigma * np.sqrt(T)
     
