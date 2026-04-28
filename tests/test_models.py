@@ -1,4 +1,4 @@
-from models import black_scholes_call, implied_volatility
+from src.main.models import black_scholes_call, implied_volatility
 
 # Very basic tests for our models.py functions. In a real project, we'd want more comprehensive tests, but this is a start.
 def test_implied_volatility():
@@ -39,6 +39,6 @@ def test_black_scholes_call_returns_0():
 def test_vega_positive():
     """Test that vega is positive for reasonable inputs."""
     # Test that vega returns a positive number for a valid ATM option
-    from models import vega
+    from src.main.models import vega
     v = vega(S=100, K=100, T=1, r=0.05, sigma=0.2)
     assert v > 0, "Expected positive vega for reasonable inputs"

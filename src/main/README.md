@@ -32,7 +32,7 @@ pytest tests/
 ## Phases
 - [x] Phase 1: Data pipeline (fetch, clean, filter options data)
 - [x] Phase 2: Black-Scholes implementation and implied volatility extraction
-- [ ] Phase 3: Volatility surface fitting
+- [x] Phase 3: Volatility surface fitting
 - [ ] Phase 4: Monte Carlo simulation and exotic pricing
 - [ ] Phase 5: Analysis and documentation
 
