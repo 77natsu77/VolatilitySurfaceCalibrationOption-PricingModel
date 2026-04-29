@@ -1,0 +1,8 @@
+numpy
+scipy
+matplotlib
+yfinance
+pandas
+pytest
+pytest-cov
+requests
