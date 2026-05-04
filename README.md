@@ -73,5 +73,5 @@ over the path.
 ## Dependencies
 Install all dependencies with:
 ```bash
-pip install yfinance pandas numpy scipy matplotlib pytest
+pip install -r requirements.txt
 ```
